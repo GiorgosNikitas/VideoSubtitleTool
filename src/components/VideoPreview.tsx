@@ -54,7 +54,7 @@ export function VideoPreview({
   } as CSSProperties;
 
   return (
-    <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-black p-4 max-md:p-3">
+    <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-black">
       <div
         className={cn(
           "relative max-h-full overflow-hidden bg-black",

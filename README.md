@@ -28,9 +28,11 @@ Add these frontend environment variables:
 VITE_SUPABASE_URL="https://your-project.supabase.co"
 VITE_SUPABASE_ANON_KEY="your_anon_key"
 VITE_API_URL="https://videosubtitletool.onrender.com"
+VITE_CONTACT_EMAIL="privacy@example.com"
 ```
 
 For local development with the Vite proxy, `VITE_API_URL` can be omitted. For a deployed frontend, set it to the deployed API server URL.
+`VITE_CONTACT_EMAIL` is shown in the legal footer and privacy/terms pages for privacy, account, and data deletion requests.
 
 Add these API server environment variables:
 

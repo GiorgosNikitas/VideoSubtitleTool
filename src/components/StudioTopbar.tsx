@@ -29,10 +29,10 @@ export function StudioTopbar({
   onLogout,
 }: StudioTopbarProps) {
   return (
-    <header className="relative z-10 flex min-h-20 shrink-0 items-center justify-between gap-4 border-b border-white/10 bg-background px-6 py-4 max-md:flex-col max-md:items-start max-md:px-3">
+    <header className="relative z-10 flex min-h-14 shrink-0 items-center justify-between gap-4 border-b border-white/10 bg-background px-5 py-2 max-md:flex-col max-md:items-start max-md:px-3">
       <div className="relative z-10 min-w-0">
-        <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-accent">{t("app.eyebrow")}</p>
-        <h1 className="text-4xl font-black uppercase leading-none tracking-normal max-md:text-3xl">{t("app.title")}</h1>
+        <p className="mb-0.5 text-[10px] font-bold uppercase tracking-[0.18em] text-accent">{t("app.eyebrow")}</p>
+        <h1 className="text-3xl font-black uppercase leading-none tracking-normal max-md:text-2xl">{t("app.title")}</h1>
       </div>
       <div className="relative z-10 flex items-center gap-3 max-md:w-full max-md:flex-col max-md:items-stretch">
         {isAuthenticated ? (

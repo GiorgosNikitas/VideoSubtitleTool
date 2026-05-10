@@ -76,13 +76,13 @@ export function TimelinePanel({
 
   return (
     <div className="min-w-0 flex-1">
-      <div className="mb-2 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35">
+      <div className="mb-2 flex items-start justify-between gap-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35">
         <span className="shrink-0 tabular-nums text-white/55">
           <span className="text-accent">{secondsToTimestamp(currentTime)}</span>
           <span className="mx-1 text-white/25">{t("playback.separator")}</span>
           {secondsToTimestamp(duration)}
         </span>
-        <span className="max-w-[32rem] overflow-hidden text-ellipsis whitespace-nowrap text-right text-white/55">{statusMessage}</span>
+        <span className="min-w-0 flex-1 text-right leading-5 text-white/55">{statusMessage}</span>
       </div>
       <div className="overflow-x-auto pb-1">
         <div

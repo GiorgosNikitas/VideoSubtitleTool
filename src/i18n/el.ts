@@ -8,6 +8,12 @@ export const el: Record<keyof typeof en, string> = {
 
   "common.or": "Ή",
 
+  "legal.age": "13+",
+  "legal.contact": "Επικοινωνία",
+  "legal.dataDeletion": "Διαγραφή δεδομένων",
+  "legal.privacy": "Απόρρητο",
+  "legal.terms": "Όροι",
+
   "auth.account": "Λογαριασμός",
   "auth.backToEditor": "Πίσω στον editor",
   "auth.checkEmail": "Ελέγξτε το email σας για επιβεβαίωση και μετά συνδεθείτε.",

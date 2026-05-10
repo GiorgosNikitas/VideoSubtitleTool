@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CaptionStylePanel } from "../components/CaptionStylePanel";
 import { ExportProgressDialog } from "../components/ExportProgressDialog";
+import { LegalFooter } from "../components/LegalFooter";
 import { PlaybackControls } from "../components/PlaybackControls";
 import { StatusBar } from "../components/StatusBar";
 import { StudioTopbar } from "../components/StudioTopbar";
@@ -175,6 +176,7 @@ export function EditorPage() {
         </aside>
       </main>
 
+      <LegalFooter t={t} />
       <ExportProgressDialog format={state.exportFormat} open={state.isExporting} progress={state.exportProgress} statusMessage={state.statusMessage} t={t} />
     </div>
   );

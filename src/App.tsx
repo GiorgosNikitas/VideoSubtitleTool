@@ -3,7 +3,9 @@ import { AppToaster } from "./components/AppToaster";
 import { Loader2 } from "lucide-react";
 import { useAuth } from "./hooks/useAuth";
 import { AuthPage } from "./pages/AuthPage";
+import { DataDeletionPage } from "./pages/DataDeletionPage";
 import { EditorPage } from "./pages/EditorPage";
+import { LegalPage } from "./pages/LegalPage";
 
 function RequireAuth() {
   const auth = useAuth();
@@ -31,6 +33,9 @@ function App() {
         <Route element={<RequireAuth />} path="/" />
         <Route element={<AuthPage mode="login" />} path="/login" />
         <Route element={<AuthPage mode="signup" />} path="/signup" />
+        <Route element={<DataDeletionPage />} path="/data-deletion" />
+        <Route element={<LegalPage type="privacy" />} path="/privacy" />
+        <Route element={<LegalPage type="terms" />} path="/terms" />
         <Route element={<Navigate replace to="/login" />} path="*" />
       </Routes>
       <AppToaster />

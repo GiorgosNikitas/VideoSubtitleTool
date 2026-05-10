@@ -6,6 +6,12 @@ export const en = {
 
   "common.or": "OR",
 
+  "legal.age": "13+",
+  "legal.contact": "Contact",
+  "legal.dataDeletion": "Data deletion",
+  "legal.privacy": "Privacy",
+  "legal.terms": "Terms",
+
   "auth.account": "Account",
   "auth.backToEditor": "Back to editor",
   "auth.checkEmail": "Check your email to confirm the account, then sign in.",

@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Eye, EyeOff, Loader2, ShieldCheck } from "lucide-react";
+import { LegalFooter } from "../components/LegalFooter";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -267,6 +268,7 @@ export function AuthPage({ mode }: AuthPageProps) {
             <ShieldCheck size={13} className="shrink-0 text-accent" />
             <span>{t("auth.footerNote")}</span>
           </div>
+          <LegalFooter className="mt-4" compact t={t} />
         </div>
 
         <div className="relative min-h-dvh overflow-hidden max-lg:hidden">
