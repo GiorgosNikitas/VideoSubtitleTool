@@ -82,19 +82,18 @@ export function VideoPreview({
             />
             {activeCaption && activeSegment && (
               <div
-                className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 touch-none select-none justify-center px-[4%] text-center"
+                className="absolute left-0 right-0 z-10 flex -translate-y-1/2 touch-none select-none justify-center px-[4%] text-center"
                 data-testid="caption-overlay"
                 onPointerCancel={onCaptionPointerUp}
                 onPointerDown={(event) => onCaptionPointerDown(event, activeSegment)}
                 onPointerMove={onCaptionPointerMove}
                 onPointerUp={onCaptionPointerUp}
                 role="button"
-                style={{ left: "50%", top: `${activeCaption.y}%` }}
+                style={{ top: `${activeCaption.y}%` }}
                 tabIndex={0}
-                title={t("style.positionHint")}
               >
                 <span
-                  className="max-w-[92cqw] cursor-grab overflow-hidden break-words text-center font-bold leading-[1.15] text-[length:var(--caption-font-size)] text-[var(--caption-color)] active:cursor-grabbing [font-family:var(--caption-font-family)]"
+                  className="max-w-full cursor-grab overflow-hidden break-words text-center font-bold leading-[1.15] text-[length:var(--caption-font-size)] text-[var(--caption-color)] active:cursor-grabbing [font-family:var(--caption-font-family)]"
                   style={captionTextStyle}
                 >
                   {activeCaption.text}

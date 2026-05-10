@@ -43,7 +43,7 @@ export function ColorPicker({ className, customLabel, hideLabel = false, label, 
             aria-label={preset.label}
             className={cn(
               "h-7 w-7 border-2 p-0 hover:bg-[var(--swatch)]",
-              cleanHex(value) === presetColor ? "border-[#00ff85] ring-1 ring-[#00ff85]" : "border-white/20",
+              cleanHex(value) === presetColor ? "border-accent ring-1 ring-accent" : "border-white/20",
             )}
             key={presetColor}
             onClick={() => onChange(presetColor)}
@@ -76,7 +76,7 @@ export function ColorPicker({ className, customLabel, hideLabel = false, label, 
               <span className="min-w-0 truncate text-xs font-semibold uppercase tracking-[0.14em] text-white/45" title={customLabel}>
                 {customLabel}
               </span>
-              <span className="text-xs font-semibold tabular-nums text-[#00ff85]">{selectedColor.toUpperCase()}</span>
+              <span className="text-xs font-semibold tabular-nums text-accent">{selectedColor.toUpperCase()}</span>
             </div>
             <div>
               <HexColorPicker color={selectedColor} onChange={updateColor} style={{ width: "100%" }} />
@@ -89,7 +89,7 @@ export function ColorPicker({ className, customLabel, hideLabel = false, label, 
               />
               <HexColorInput
                 aria-label={customLabel}
-                className="h-8 min-w-0 flex-1 rounded-sm border border-white/10 bg-[#0a0a0a] px-3 text-xs font-semibold uppercase tabular-nums text-white outline-none focus:border-[#00ff85] focus:ring-1 focus:ring-[#00ff85]"
+                className="h-8 min-w-0 flex-1 rounded-sm border border-white/10 bg-background px-3 text-xs font-semibold uppercase tabular-nums text-white outline-none focus:border-accent focus:ring-1 focus:ring-ring"
                 color={selectedColor}
                 onChange={updateColor}
                 prefixed

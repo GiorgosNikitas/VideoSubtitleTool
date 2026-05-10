@@ -28,7 +28,7 @@ export function EditorPage() {
   });
 
   return (
-    <div className="relative flex h-dvh min-w-80 flex-col overflow-hidden bg-[#0a0a0a] bg-[linear-gradient(180deg,rgba(255,255,255,0.035),transparent_18rem),#0a0a0a] font-mono text-[#f5f5f5] max-[1180px]:h-auto max-[1180px]:min-h-dvh max-[1180px]:overflow-visible">
+    <div className="relative flex h-dvh min-w-80 flex-col overflow-hidden bg-background bg-[linear-gradient(180deg,rgba(255,255,255,0.035),transparent_18rem),hsl(var(--background))] font-mono text-foreground max-[1180px]:h-auto max-[1180px]:min-h-dvh max-[1180px]:overflow-visible">
       <StudioTopbar
         authEmail={auth.user?.email ?? auth.profile?.email ?? null}
         authLoading={auth.loading}

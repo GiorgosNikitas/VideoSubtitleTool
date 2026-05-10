@@ -22,7 +22,7 @@ export function ExportProgressDialog({ format, open, progress, statusMessage, t 
         onEscapeKeyDown={(event) => event.preventDefault()}
         onInteractOutside={(event) => event.preventDefault()}
       >
-        <div className="flex items-center gap-3 text-[#00ff85]">
+        <div className="flex items-center gap-3 text-accent">
           <Loader2 className="animate-spin" size={22} />
           <div>
             <DialogTitle className="text-lg font-black uppercase tracking-normal">{t("dialog.exportTitle")}</DialogTitle>
@@ -33,7 +33,7 @@ export function ExportProgressDialog({ format, open, progress, statusMessage, t 
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
             <span>{t("dialog.exportProgress")}</span>
-            <span className="text-[#00ff85]">{percent}%</span>
+            <span className="text-accent">{percent}%</span>
           </div>
           <Progress value={percent} />
         </div>

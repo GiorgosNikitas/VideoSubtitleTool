@@ -1,4 +1,5 @@
 import { CaptionFont, CaptionShadowStyle, CaptionTextCase, ExportFormat, ExportFormatOption } from "../types/editor";
+import { apiUrl } from "./apiConfig";
 import { SubtitleLanguage, SubtitleSegment } from "./subtitles";
 
 type ExportOptions = {
@@ -138,7 +139,7 @@ export async function exportCaptionedVideo({
     };
 
     onProgress(0.04);
-    xhr.open("POST", "/api/export");
+    xhr.open("POST", apiUrl("/api/export"));
     if (accessToken) {
       xhr.setRequestHeader("Authorization", `Bearer ${accessToken}`);
     }

@@ -82,8 +82,8 @@ export function SubtitleList({
             <article
               className={cn(
                 "grid cursor-pointer grid-cols-[3rem_minmax(0,1fr)] gap-3 border-b border-white/10 px-4 py-2 transition-colors max-md:grid-cols-1",
-                isActive && "border-l-4 border-l-[#ff3d57] bg-[#1b1b1b] pl-3",
-                isHighlighted && !isActive && "bg-[#101010]",
+                isActive && "border-l-4 border-l-destructive bg-muted pl-3",
+                isHighlighted && !isActive && "bg-card",
               )}
               key={segment.id}
               onClick={() => onSeekToSegment(segment)}
@@ -149,7 +149,7 @@ export function SubtitleList({
                     <Plus size={13} />
                   </Button>
                   <Button
-                    className="hover:bg-[#ff3d57]/10 hover:text-[#ff3d57]"
+                    className="hover:bg-destructive/10 hover:text-destructive"
                     onClick={(event) => {
                       event.stopPropagation();
                       onDelete(segment.id);

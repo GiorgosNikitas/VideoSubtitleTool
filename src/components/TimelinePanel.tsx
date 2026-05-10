@@ -78,7 +78,7 @@ export function TimelinePanel({
     <div className="min-w-0 flex-1">
       <div className="mb-2 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/35">
         <span className="shrink-0 tabular-nums text-white/55">
-          <span className="text-[#00ff85]">{secondsToTimestamp(currentTime)}</span>
+          <span className="text-accent">{secondsToTimestamp(currentTime)}</span>
           <span className="mx-1 text-white/25">{t("playback.separator")}</span>
           {secondsToTimestamp(duration)}
         </span>
@@ -86,7 +86,7 @@ export function TimelinePanel({
       </div>
       <div className="overflow-x-auto pb-1">
         <div
-          className="relative h-9 min-w-full cursor-crosshair overflow-hidden rounded-sm border border-white/10 bg-[#1b1b1b]"
+          className="relative h-9 min-w-full cursor-crosshair overflow-hidden rounded-sm border border-white/10 bg-muted"
           onPointerCancel={finishTimelineScrub}
           onPointerDown={startTimelineScrub}
           onPointerMove={moveTimelineScrub}
@@ -98,7 +98,7 @@ export function TimelinePanel({
             width: `${timelineWidth}px`,
           }}
         >
-          <div className="pointer-events-none absolute bottom-0 top-0 z-30 w-0.5 -translate-x-1/2 bg-[#ff3d57]" style={{ left: `${timelineProgressPercent}%` }} />
+          <div className="pointer-events-none absolute bottom-0 top-0 z-30 w-0.5 -translate-x-1/2 bg-destructive" style={{ left: `${timelineProgressPercent}%` }} />
           {segments.map((segment) => {
             const shiftedStart = segment.start + offset;
             const shiftedEnd = segment.end + offset;
@@ -117,10 +117,10 @@ export function TimelinePanel({
                 className={cn(
                   "absolute bottom-1 top-1 h-auto min-w-4 cursor-grab touch-none rounded-[2px] border p-0 active:cursor-grabbing",
                   isActive
-                    ? "z-20 border-[#ff3d57] bg-[#ff3d57] hover:bg-[#ff3d57]"
+                    ? "z-20 border-destructive bg-destructive hover:bg-destructive"
                     : isHighlighted
-                      ? "z-10 border-[#00ff85] bg-[#00ff85] hover:bg-[#00ff85]"
-                      : "border-white bg-white/90 hover:border-[#00ff85] hover:bg-[#00ff85]",
+                      ? "z-10 border-accent bg-accent hover:bg-accent"
+                      : "border-white bg-white/90 hover:border-accent hover:bg-accent",
                 )}
                 key={segment.id}
                 onMouseEnter={() => onHoverSegment(segment.id)}

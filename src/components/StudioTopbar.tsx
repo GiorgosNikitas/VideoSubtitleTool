@@ -1,8 +1,9 @@
-import { Activity, Coins, LogIn, LogOut } from "lucide-react";
+import { Coins, LogIn, LogOut, User } from "lucide-react";
 import { SubtitleLanguage } from "../lib/subtitles";
 import { Translator } from "../i18n/translations";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 type StudioTopbarProps = {
   authEmail: string | null;
@@ -28,29 +29,39 @@ export function StudioTopbar({
   onLogout,
 }: StudioTopbarProps) {
   return (
-    <header className="relative z-10 flex min-h-20 shrink-0 items-center justify-between gap-4 border-b border-white/10 bg-[#0a0a0a] px-6 py-4 max-md:flex-col max-md:items-start max-md:px-3">
+    <header className="relative z-10 flex min-h-20 shrink-0 items-center justify-between gap-4 border-b border-white/10 bg-background px-6 py-4 max-md:flex-col max-md:items-start max-md:px-3">
       <div className="relative z-10 min-w-0">
-        <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#00ff85]">{t("app.eyebrow")}</p>
+        <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-accent">{t("app.eyebrow")}</p>
         <h1 className="text-4xl font-black uppercase leading-none tracking-normal max-md:text-3xl">{t("app.title")}</h1>
       </div>
       <div className="relative z-10 flex items-center gap-3 max-md:w-full max-md:flex-col max-md:items-stretch">
-        <Badge className="justify-center" variant="accent">
-          <Activity size={15} />
-          {t("app.pipeline")}
-        </Badge>
         {isAuthenticated ? (
-          <div className="flex flex-wrap items-center gap-2 max-md:w-full">
+          <div className="flex flex-wrap items-center justify-end gap-2 max-md:w-full">
             <Badge className="justify-center" variant="secondary">
               <Coins size={15} />
               {t("auth.credits", { count: creditBalance ?? 0 })}
             </Badge>
-            <Badge className="max-w-56 justify-start overflow-hidden whitespace-nowrap normal-case" variant="default">
-              <span className="truncate">{authEmail}</span>
-            </Badge>
-            <Button disabled={authLoading} onClick={onLogout} size="sm" type="button" variant="outline">
-              <LogOut size={14} />
-              {t("auth.logout")}
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button aria-label={t("auth.account")} className="h-10 w-10" disabled={authLoading} size="icon" type="button" variant="outline">
+                  <User className="!h-6 !w-6" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="grid w-72 gap-4 p-4">
+                <div className="grid gap-1">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">{t("auth.account")}</div>
+                  <div className="truncate text-sm font-semibold normal-case tracking-normal text-white">{authEmail}</div>
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
+                    <Coins size={13} className="text-accent" />
+                    {t("auth.credits", { count: creditBalance ?? 0 })}
+                  </div>
+                </div>
+                <Button className="w-full justify-center" disabled={authLoading} onClick={onLogout} size="sm" type="button" variant="outline">
+                  <LogOut size={14} />
+                  {t("auth.logout")}
+                </Button>
+              </PopoverContent>
+            </Popover>
           </div>
         ) : (
           <Button disabled={authLoading} onClick={onAuthOpen} size="sm" type="button" variant="accent">
@@ -58,7 +69,7 @@ export function StudioTopbar({
             {t("auth.login")}
           </Button>
         )}
-        <div className="flex rounded-sm border border-white/10 bg-[#101010] p-1" aria-label={t("app.languageToggle")}>
+        <div className="flex rounded-sm border border-white/10 bg-card p-1" aria-label={t("app.languageToggle")}>
           <Button
             className="min-w-12"
             onClick={() => onLanguageChange("el")}

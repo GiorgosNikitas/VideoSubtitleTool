@@ -22,6 +22,9 @@ type TranscriptionPanelProps = {
   onTemperatureChange: (temperature: number) => void;
 };
 
+const TRANSCRIPTION_MODEL_OPTIONS = ["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-transcribe", "gpt-4o-transcribe-diarize"];
+const LANGUAGE_OPTIONS: SubtitleLanguage[] = ["el", "en"];
+
 export function TranscriptionPanel({
   autoChunking,
   language,
@@ -45,10 +48,11 @@ export function TranscriptionPanel({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="whisper-1">whisper-1</SelectItem>
-              <SelectItem value="gpt-4o-mini-transcribe">gpt-4o-mini-transcribe</SelectItem>
-              <SelectItem value="gpt-4o-transcribe">gpt-4o-transcribe</SelectItem>
-              <SelectItem value="gpt-4o-transcribe-diarize">gpt-4o-transcribe-diarize</SelectItem>
+              {TRANSCRIPTION_MODEL_OPTIONS.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </Label>
@@ -60,8 +64,11 @@ export function TranscriptionPanel({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="el">{t("language.greek")}</SelectItem>
-              <SelectItem value="en">{t("language.english")}</SelectItem>
+              {LANGUAGE_OPTIONS.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {t(option === "el" ? "language.greek" : "language.english")}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </Label>

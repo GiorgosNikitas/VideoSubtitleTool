@@ -27,7 +27,10 @@ Add these frontend environment variables:
 ```bash
 VITE_SUPABASE_URL="https://your-project.supabase.co"
 VITE_SUPABASE_ANON_KEY="your_anon_key"
+VITE_API_URL="https://videosubtitletool.onrender.com"
 ```
+
+For local development with the Vite proxy, `VITE_API_URL` can be omitted. For a deployed frontend, set it to the deployed API server URL.
 
 Add these API server environment variables:
 

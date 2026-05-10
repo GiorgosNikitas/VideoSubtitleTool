@@ -1,5 +1,6 @@
 import { createContext, PropsWithChildren, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
+import { apiUrl } from "../lib/apiConfig";
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 
 export type AccountProfile = {
@@ -59,7 +60,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       return null;
     }
 
-    const response = await fetch("/api/me", {
+    const response = await fetch(apiUrl("/api/me"), {
       headers: {
         Authorization: `Bearer ${token}`,
       },

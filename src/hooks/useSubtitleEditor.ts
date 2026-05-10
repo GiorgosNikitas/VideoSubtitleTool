@@ -1,6 +1,7 @@
 import { ChangeEvent, CSSProperties, PointerEvent, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { createTranslator } from "../i18n/translations";
+import { apiUrl } from "../lib/apiConfig";
 import {
   applyCaptionCase,
   captionPositionDefaults,
@@ -34,7 +35,7 @@ import {
 
 const DEFAULT_LANGUAGE: SubtitleLanguage = "el";
 const DEFAULT_VIDEO_SIZE: VideoSize = { width: 16, height: 9 };
-const TRANSCRIPTION_ENDPOINT = "/api/transcribe";
+const TRANSCRIPTION_ENDPOINT = apiUrl("/api/transcribe");
 
 type UseSubtitleEditorOptions = {
   accessToken?: string | null;

@@ -11,7 +11,7 @@ function RequireAuth() {
 
   if (auth.loading) {
     return (
-      <div className="grid min-h-dvh place-items-center bg-[#0a0a0a] text-[#00ff85]">
+      <div className="grid min-h-dvh place-items-center bg-background text-accent">
         <Loader2 className="animate-spin" size={36} />
       </div>
     );

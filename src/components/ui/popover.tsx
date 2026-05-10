@@ -14,7 +14,7 @@ const PopoverContent = React.forwardRef<
     <PopoverPrimitive.Content
       align={align}
       className={cn(
-        "z-50 rounded-sm border border-white/10 bg-[#101010] p-3 text-white shadow-2xl outline-none data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "z-50 rounded-sm border border-white/10 bg-popover p-3 text-popover-foreground shadow-2xl outline-none data-[state=open]:animate-in data-[state=closed]:animate-out",
         className,
       )}
       ref={ref}

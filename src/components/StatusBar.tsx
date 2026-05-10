@@ -121,7 +121,7 @@ export function StatusBar({
             {t("action.burnExport")}
           </Button>
           <Select disabled={isExporting} onValueChange={(value) => onExportFormatChange(value as ExportFormat)} value={exportFormat}>
-            <SelectTrigger className="h-8 w-24 rounded-l-none border border-[#ff3d57] border-l-black/30 bg-[#ff3d57] px-2 text-xs font-semibold uppercase tracking-[0.12em] text-white hover:bg-white hover:text-black focus:ring-[#00ff85]">
+            <SelectTrigger className="h-8 w-24 rounded-l-none border border-destructive border-l-black/30 bg-destructive px-2 text-xs font-semibold uppercase tracking-[0.12em] text-white hover:bg-white hover:text-black focus:ring-ring">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

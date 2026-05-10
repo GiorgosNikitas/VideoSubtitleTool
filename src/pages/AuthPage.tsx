@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Eye, EyeOff, Loader2, LockKeyhole, ShieldCheck } from "lucide-react";
+import { Eye, EyeOff, Loader2, ShieldCheck } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -157,20 +157,20 @@ export function AuthPage({ mode }: AuthPageProps) {
   }
 
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-[hsl(var(--background))] font-mono text-[hsl(var(--foreground))]">
-      <div className="absolute inset-0 bg-[hsl(var(--background))]" />
+    <main className="relative min-h-dvh overflow-hidden bg-background font-mono text-foreground">
+      <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--accent)_/_0.08)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)_/_0.08)_1px,transparent_1px)] bg-[size:44px_44px]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_28%,hsl(var(--accent)_/_0.24),transparent_18rem),radial-gradient(circle_at_80%_72%,hsl(var(--muted-foreground)_/_0.22),transparent_22rem),linear-gradient(120deg,hsl(var(--background)_/_0.15),hsl(var(--background)_/_0.84))]" />
-      <div className="absolute -left-24 top-1/4 h-64 w-64 rounded-full border border-[hsl(var(--accent)_/_0.2)] bg-[hsl(var(--accent)_/_0.05)] blur-2xl" />
+      <div className="absolute -left-24 top-1/4 h-64 w-64 rounded-full border border-accent/20 bg-accent/5 blur-2xl" />
 
       <section className="relative z-10 grid min-h-dvh w-full grid-cols-[minmax(28rem,0.82fr)_minmax(0,1.18fr)] max-lg:grid-cols-1">
-        <div className="relative z-10 flex min-h-dvh flex-col justify-between border-r border-white/10 bg-[hsl(var(--card)_/_0.1)] px-[clamp(1.5rem,4vw,5rem)] py-[clamp(1.25rem,3vw,3rem)] backdrop-blur-2xl max-lg:border-r-0">
+        <div className="relative z-10 flex min-h-dvh flex-col justify-between border-r border-white/10 bg-card/10 px-[clamp(1.5rem,4vw,5rem)] py-[clamp(1.25rem,3vw,3rem)] backdrop-blur-2xl max-lg:border-r-0">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--accent))]">{t("app.eyebrow")}</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">{t("app.eyebrow")}</p>
               <h1 className="mt-2 text-2xl font-black uppercase tracking-normal">{t("app.title")}</h1>
             </div>
-            <div className="flex rounded-sm border border-white/10 bg-[hsl(var(--background))] p-1" aria-label={t("app.languageToggle")}>
+            <div className="flex rounded-sm border border-white/10 bg-background p-1" aria-label={t("app.languageToggle")}>
               <Button className="h-7 min-w-10 px-2" onClick={() => setLanguage("el")} size="sm" type="button" variant={language === "el" ? "default" : "ghost"}>
                 EL
               </Button>
@@ -181,23 +181,18 @@ export function AuthPage({ mode }: AuthPageProps) {
           </div>
 
           <div className="mx-auto grid w-full max-w-[26rem] gap-6 py-8">
-            <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-[hsl(var(--accent)_/_0.4)] text-[hsl(var(--accent))]">
-                <LockKeyhole size={18} />
-              </div>
-              <div className="min-w-0">
-                <h2 className="text-2xl font-black uppercase tracking-normal">{isLogin ? t("auth.loginTitle") : t("auth.signupTitle")}</h2>
-                <p className="mt-2 text-xs leading-5 text-white/45">{t("auth.subtitle")}</p>
-              </div>
+            <div className="grid gap-4 text-center">
+              <h2 className="text-2xl font-black uppercase leading-none tracking-normal">{isLogin ? t("auth.loginTitle") : t("auth.signupTitle")}</h2>
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[hsl(var(--accent)_/_0.55)] to-transparent" />
             </div>
 
             {!auth.configured && (
-              <div className="rounded-sm border border-[hsl(var(--destructive)_/_0.4)] bg-[hsl(var(--destructive)_/_0.1)] p-3 text-xs leading-5 text-white/75">{t("auth.notConfigured")}</div>
+              <div className="rounded-sm border border-destructive/40 bg-destructive/10 p-3 text-xs leading-5 text-white/75">{t("auth.notConfigured")}</div>
             )}
 
             <div className="grid gap-4">
               <Button
-                className="h-10 w-full border-white/15 bg-white text-black hover:border-[hsl(var(--accent)_/_0.7)] hover:bg-white hover:text-black"
+                className="h-10 w-full border-white/15 bg-white text-black hover:border-accent/70 hover:bg-white hover:text-black"
                 disabled={busy || oauthBusy || !auth.configured}
                 onClick={handleGoogleSignIn}
                 type="button"
@@ -239,21 +234,21 @@ export function AuthPage({ mode }: AuthPageProps) {
                   <PasswordField autoComplete="new-password" label={t("auth.repeatPassword")} onChange={setPasswordRepeat} value={passwordRepeat} />
                   <div className="grid gap-2 rounded-sm border border-white/10 bg-black/20 p-3">
                     {rules.map((rule) => (
-                      <div className={cn("flex items-center gap-2 text-[11px]", rule.valid ? "text-[hsl(var(--accent))]" : "text-white/40")} key={rule.label}>
-                        <span className={cn("h-1.5 w-1.5 rounded-full", rule.valid ? "bg-[hsl(var(--accent))]" : "bg-white/25")} />
+                      <div className={cn("flex items-center gap-2 text-[11px]", rule.valid ? "text-accent" : "text-white/40")} key={rule.label}>
+                        <span className={cn("h-1.5 w-1.5 rounded-full", rule.valid ? "bg-accent" : "bg-white/25")} />
                         {rule.label}
                       </div>
                     ))}
-                    <div className={cn("flex items-center gap-2 text-[11px]", passwordsMatch ? "text-[hsl(var(--accent))]" : "text-white/40")}>
-                      <span className={cn("h-1.5 w-1.5 rounded-full", passwordsMatch ? "bg-[hsl(var(--accent))]" : "bg-white/25")} />
+                    <div className={cn("flex items-center gap-2 text-[11px]", passwordsMatch ? "text-accent" : "text-white/40")}>
+                      <span className={cn("h-1.5 w-1.5 rounded-full", passwordsMatch ? "bg-accent" : "bg-white/25")} />
                       {t("auth.passwordRuleMatch")}
                     </div>
                   </div>
                 </>
               )}
 
-              {message && <p className="rounded-sm border border-[hsl(var(--accent)_/_0.3)] bg-[hsl(var(--accent)_/_0.1)] p-3 text-xs leading-5 text-[hsl(var(--accent))]">{message}</p>}
-              {error && <p className="rounded-sm border border-[hsl(var(--destructive)_/_0.4)] bg-[hsl(var(--destructive)_/_0.1)] p-3 text-xs leading-5 text-white/80">{error}</p>}
+              {message && <p className="rounded-sm border border-accent/30 bg-accent/10 p-3 text-xs leading-5 text-accent">{message}</p>}
+              {error && <p className="rounded-sm border border-destructive/40 bg-destructive/10 p-3 text-xs leading-5 text-white/80">{error}</p>}
 
               <Button className="mt-1 w-full" disabled={busy || !auth.configured} type="submit" variant="default">
                 {busy && <Loader2 className="animate-spin" size={14} />}
@@ -269,7 +264,7 @@ export function AuthPage({ mode }: AuthPageProps) {
           </div>
 
           <div className="flex items-center justify-center gap-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
-            <ShieldCheck size={13} className="shrink-0 text-[hsl(var(--accent))]" />
+            <ShieldCheck size={13} className="shrink-0 text-accent" />
             <span>{t("auth.footerNote")}</span>
           </div>
         </div>
